@@ -47,8 +47,44 @@ UChile4.bindPopup("Ocupado");
 var UTEM = L.polygon(UTEM_cancha, {color: '#66dbff', fillColor: '#66dbff', fillOpacity: 0.5}).addTo(map);
 UTEM.bindPopup("Ocupado");
 
-var Alerces = L.polygon(Alerces_cancha, {color: '#66dbff', fillColor: '#66dbff', fillOpacity: 0.5}).addTo(map);
-Alerces.bindPopup("Ocupado");
+color = ["#ff0000","#66dbff"];
+function colors(col=color[0]){
+    return col;
+}
+
+//var Alerces = L.polygon(Alerces_cancha, {color: colors(), fillColor: colors(), fillOpacity: 0.5});
+
+var xxx = 0;
+
+var Alerces;
+var cancha = [Alerces];
+var canchaa = [Alerces_cancha];
+
+function canchas(cancha,canchaa){
+    cancha = L.polygon(canchaa, {color: colors(), fillColor: colors(), fillOpacity: 0.5});
+    cancha.addTo(map);
+    console.log("bien");
+}
+
+function allCanchas(){
+    if(xxx==0){
+        xxx++;
+console.log(xxx);
+        for(var i=0;i<cancha.length;i++){
+            canchas(cancha[i], canchaa[i]);
+        }
+    setTimeout(() => {allCanchas();}, 5000);
+    }else{
+console.log(xxx);
+        cancha.remove();
+        for(var i=0;i<cancha.length;i++){
+            canchas(cancha[i], canchaa[i]);
+        }
+    setTimeout(() => {allCanchas();}, 5000);
+    }
+}
+allCanchas();
+
 
 /*
 var popup = L.popup()
