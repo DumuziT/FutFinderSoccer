@@ -54,7 +54,17 @@ const polygons = []; // Array para almacenar los polígonos creados
 function createPolygon(coordinates, name, initialStatus) {
   let currentColor = initialStatus === 'Ocupado' ? 'red' : 'green';
   const polygon = L.polygon(coordinates, { color: currentColor }).addTo(map);
-  polygon.bindPopup(`${name}: ${initialStatus}`);
+  const popupContent = `
+    <div>
+      <style>
+        .popup-text {
+          font-size: 20px; /*Ajusta el tamaño de la fuente según tus necesidades*/
+        }
+      </style>
+      <span class="popup-text">${name}: ${initialStatus}</span>
+    </div>
+  `;
+  polygon.bindPopup(popupContent);
   polygons.push({ polygon, name, currentColor, initialStatus });
 }
 
