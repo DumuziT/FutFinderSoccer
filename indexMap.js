@@ -56,11 +56,6 @@ function createPolygon(coordinates, name, initialStatus) {
   const polygon = L.polygon(coordinates, { color: currentColor }).addTo(map);
   const popupContent = `
     <div>
-      <style>
-        .popup-text {
-          font-size: 20px; /*Ajusta el tamaño de la fuente según tus necesidades*/
-        }
-      </style>
       <span class="popup-text">${name}: ${initialStatus}</span>
     </div>
   `;
@@ -89,12 +84,22 @@ function changeSelectedCanchaStatus() {
     const { polygon, currentColor } = selectedPolygon;
     if (currentColor === 'red' && selectedStatus === 'Disponible') {
       polygon.setStyle({ color: 'green' });
-      polygon.setPopupContent(`${selectedCancha}: ${currentStatus[1]}`);
+      const popupContent = `
+        <div>
+          <span class="popup-text">${selectedCancha}: ${currentStatus[1]}</span>
+        </div>
+      `;
+      polygon.setPopupContent(popupContent);
       selectedPolygon.currentColor = 'green';
       selectedPolygon.initialStatus = currentStatus[1];
     } else if (currentColor === 'green' && selectedStatus === 'Ocupado') {
       polygon.setStyle({ color: 'red' });
-      polygon.setPopupContent(`${selectedCancha}: ${currentStatus[0]}`);
+      const popupContent = `
+        <div>
+          <span class="popup-text">${selectedCancha}: ${currentStatus[0]}</span>
+        </div>
+      `;
+      polygon.setPopupContent(popupContent);
       selectedPolygon.currentColor = 'red';
       selectedPolygon.initialStatus = currentStatus[0];
     }
