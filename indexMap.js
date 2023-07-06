@@ -91,5 +91,21 @@ function changeSelectedCanchaStatus() {
   }
 }
 
-initializePolygons();
+//Boton usuario
+var showTabButton = document.getElementById('showTabButton');
+var floatingTab = document.querySelector('.floating-tab');
 
+showTabButton.addEventListener('click', function() {
+  floatingTab.classList.remove('hidden');
+});
+
+document.addEventListener('click', function(event) {
+  var targetElement = event.target;
+
+  if (!floatingTab.contains(targetElement) && targetElement !== showTabButton) {
+    floatingTab.classList.add('hidden');
+  }
+});
+//Final boton usuario
+
+initializePolygons();
