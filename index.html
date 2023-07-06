@@ -29,11 +29,49 @@
         border-color: #00dd66;
         font-size: 20px;
       }
+      table {
+        width: 100%;
+      }
       .select1{
         width: 250px;
       }
       .select2-button{
-        width: 200px;
+        width: 180px;
+      }
+      tr:nth-child(even) {
+        background-color: #00ff77;
+      }
+      tr:nth-child(odd) {
+        background-color: #00dd66;
+      }
+      .floating-tab {
+        background: #9ccc99;
+        position: top;
+        bottom: auto;
+        right: 10px;
+        width: 340px;
+        height: 4px;
+        background-color: #f1f1f1;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+      }
+      .tab-button {
+        background: #9ccc99;
+        width: 100%;
+        padding: 10px;
+        background-color: #ccc;
+        border: none;
+        border-bottom: 1px solid #999;
+        border-radius: 4px 4px 0 0;
+        cursor: pointer;
+      }
+      .tab-content {
+        background: #9ccc99;
+        padding: 10px;
+      }
+      .hidden {
+        background: #9ccc99;
+        display: none;
       }
     </style>
   </head>
@@ -55,6 +93,35 @@
       </select>
       <button class="select2-button" onclick="changeSelectedCanchaStatus()">Cambiar Estado</button>
       <a href="map.html"><button class="select2-button">Mapa completo</button></a>
+      <button class="select2-button" id="showTabButton">Usuario</button>
+      <div class="floating-tab hidden">
+        <button class="tab-button">Usuario</button>
+        <div class="tab-content">
+          <table>
+            <tr>
+              <th colspan="2">
+                <img src="ronaldo.jpg" alt="Imagen" width="250" height="250">
+              </th>
+            </tr>
+            <tr>
+              <th>Nombre:</th>
+              <td>Cristiano Ronaldo</td>
+            </tr>
+            <tr>
+              <th>Calificacion:</th>
+              <td>5/5</td>
+            </tr>
+            <tr>
+              <th>Posicion:</th>
+              <td>Defensa</td>
+            </tr>
+            <tr>
+              <th>Tiempo de juego:</th>
+              <td>17hrs</td>
+            </tr>
+          </table>
+        </div>
+      </div>
     </div>
     <script src="indexMap.js"></script>
   </body>
