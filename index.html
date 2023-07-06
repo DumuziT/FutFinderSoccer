@@ -32,24 +32,39 @@
       table {
         width: 100%;
       }
-      .select1{
-        width: 250px;
+      .design1 {
+        width: 210px;
       }
-      .select2-button{
+      .design2 {
         width: 180px;
       }
       tr:nth-child(even) {
         background-color: #00ff77;
+        font-size: 30px;
       }
       tr:nth-child(odd) {
         background-color: #00dd66;
+        font-size: 30px;
       }
+/*INICIO DE LA EDICION DEL MAPA*/
+      #container {
+        width: 100%;
+        height: 70%;
+      }
+      #map {
+        width: 100%;
+        height: 100%;
+      }
+/*FINAL DE LA EDICION DEL MAPA*/
+/*INICIO DE LA EDICION DEL USUARIO*/
       .floating-tab {
         background: #9ccc99;
-        position: top;
+        position: absolute;
+        top: 10px;
         bottom: auto;
         right: 10px;
-        width: 340px;
+        z-index: 9999;
+        width: 550px;
         height: 4px;
         background-color: #f1f1f1;
         border: 1px solid #ccc;
@@ -64,6 +79,8 @@
         border-bottom: 1px solid #999;
         border-radius: 4px 4px 0 0;
         cursor: pointer;
+        font-size: 35px;
+        font-weight: bold;
       }
       .tab-content {
         background: #9ccc99;
@@ -73,13 +90,16 @@
         background: #9ccc99;
         display: none;
       }
+/*FIN DE LA EDICION DEL USUARIO*/
     </style>
   </head>
   <body>
-    <div id="map" style="width: 100%; height: 70%;"></div>
+<div id="container">
+  <div id="map"></div>
+</div>
     <div>
-      <select class="select1" id="canchaSelect" onchange="changeStatusByCancha()">
-        <option value="">Seleccione una cancha</option>
+      <select class="design1" id="canchaSelect" onchange="changeStatusByCancha()">
+        <option value="">Seleccionar cancha</option>
         <option value="UChile1">UChile1</option>
         <option value="UChile2">UChile2</option>
         <option value="UChile3">UChile3</option>
@@ -87,13 +107,12 @@
         <option value="UTEM">UTEM</option>
         <option value="Alerces">Alerces</option>
       </select>
-      <select class="select2-button" id="statusSelect">
+      <select class="design2" id="statusSelect">
         <option value="Ocupado">Ocupado</option>
         <option value="Disponible">Disponible</option>
       </select>
-      <button class="select2-button" onclick="changeSelectedCanchaStatus()">Cambiar Estado</button>
-      <a href="map.html"><button class="select2-button">Mapa completo</button></a>
-      <button class="select2-button" id="showTabButton">Usuario</button>
+      <button class="design2" onclick="changeSelectedCanchaStatus()">Cambiar Estado</button>
+      <button class="design2" id="showTabButton">Usuario</button>
       <div class="floating-tab hidden">
         <button class="tab-button">Usuario</button>
         <div class="tab-content">
@@ -113,15 +132,16 @@
             </tr>
             <tr>
               <th>Posicion:</th>
-              <td>Defensa</td>
+              <td>Delantero</td>
             </tr>
             <tr>
               <th>Tiempo de juego:</th>
-              <td>17hrs</td>
+              <td>+9999hrs</td>
             </tr>
           </table>
         </div>
       </div>
+      <a href="map.html"><button class="design2">Mapa completo</button></a>
     </div>
     <script src="indexMap.js"></script>
   </body>
