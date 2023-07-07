@@ -64,12 +64,12 @@ function createPolygon(coordinates, name, initialStatus) {
 }
 
 function initializePolygons() {
-  createPolygon(UChile1_cancha, 'UChile1', 'Ocupado');
-  createPolygon(UChile2_cancha, 'UChile2', 'Ocupado');
-  createPolygon(UChile3_cancha, 'UChile3', 'Ocupado');
-  createPolygon(UChile4_cancha, 'UChile4', 'Ocupado');
-  createPolygon(UTEM_cancha, 'UTEM', 'Ocupado');
-  createPolygon(Alerces_cancha, 'Alerces', 'Ocupado');
+  createPolygon(UChile1_cancha, 'UChile1', 'Disponible');
+  createPolygon(UChile2_cancha, 'UChile2', 'Disponible');
+  createPolygon(UChile3_cancha, 'UChile3', 'Disponible');
+  createPolygon(UChile4_cancha, 'UChile4', 'Disponible');
+  createPolygon(UTEM_cancha, 'UTEM', 'Disponible');
+  createPolygon(Alerces_cancha, 'Alerces', 'Disponible');
 }
 
 function changeSelectedCanchaStatus() {
