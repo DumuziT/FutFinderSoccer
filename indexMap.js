@@ -52,7 +52,7 @@ const currentStatus = ['Ocupado', 'Disponible']; // Variable para el estado de l
 const polygons = []; // Array para almacenar los polígonos creados
 
 function createPolygon(coordinates, name, initialStatus) {
-  let currentColor = initialStatus === 'Disponible' ? 'red' : 'green';
+  let currentColor = initialStatus === 'Ocupado' ? 'red' : 'green';
   const polygon = L.polygon(coordinates, { color: currentColor }).addTo(map);
   const popupContent = `
     <div>
@@ -64,12 +64,12 @@ function createPolygon(coordinates, name, initialStatus) {
 }
 
 function initializePolygons() {
-  createPolygon(UChile1_cancha, 'UChile1', 'Disponible');
-  createPolygon(UChile2_cancha, 'UChile2', 'Disponible');
-  createPolygon(UChile3_cancha, 'UChile3', 'Disponible');
-  createPolygon(UChile4_cancha, 'UChile4', 'Disponible');
-  createPolygon(UTEM_cancha, 'UTEM', 'Disponible');
-  createPolygon(Alerces_cancha, 'Alerces', 'Disponible');
+  createPolygon(UChile1_cancha, 'UChile1', 'Ocupado');
+  createPolygon(UChile2_cancha, 'UChile2', 'Ocupado');
+  createPolygon(UChile3_cancha, 'UChile3', 'Ocupado');
+  createPolygon(UChile4_cancha, 'UChile4', 'Ocupado');
+  createPolygon(UTEM_cancha, 'UTEM', 'Ocupado');
+  createPolygon(Alerces_cancha, 'Alerces', 'Ocupado');
 }
 
 function changeSelectedCanchaStatus() {
