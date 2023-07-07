@@ -52,7 +52,7 @@ const currentStatus = ['Ocupado', 'Disponible']; // Variable para el estado de l
 const polygons = []; // Array para almacenar los polígonos creados
 
 function createPolygon(coordinates, name, initialStatus) {
-  let currentColor = initialStatus === 'Ocupado' ? 'red' : 'green';
+  let currentColor = initialStatus === 'Disponible' ? 'red' : 'green';
   const polygon = L.polygon(coordinates, { color: currentColor }).addTo(map);
   const popupContent = `
     <div>
