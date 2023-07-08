@@ -13,6 +13,7 @@
 
 Ejecuta `install.sh` para instalar los programas necesarios. Puedes hacerlo mediante el siguiente comando en la terminal:
 ```
+chmod +x install.sh
 ./install.sh
 ```
 Esto se encargará de instalar todas las dependencias requeridas para el funcionamiento del servidor.
