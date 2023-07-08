@@ -1,4 +1,3 @@
-//https://leafletjs.com/reference.html
 const map = L.map('map').setView([-33.4681, -70.5946], 17);
 const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
@@ -48,8 +47,8 @@ const Alerces_cancha = [
 ];
 
 const currentStatus = ['Ocupado', 'Disponible']; // Variable para el estado de los polígonos
-
 const polygons = []; // Array para almacenar los polígonos creados
+let userMarker; // Variable para almacenar el marcador del usuario
 
 function createPolygon(coordinates, name, initialStatus) {
   let currentColor = initialStatus === 'Ocupado' ? 'red' : 'green';
@@ -121,6 +120,30 @@ document.addEventListener('click', function(event) {
     floatingTab.classList.add('hidden');
   }
 });
-//Final boton usuario
+
+//Función para obtener la ubicación del usuario
+function getUserLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.watchPosition(
+      function (position) {
+        var { latitude, longitude } = position.coords;
+        if (userMarker) {
+          // Si ya existe un marcador del usuario, actualiza su posición
+          userMarker.setLatLng([latitude, longitude]);
+        } else {
+          // Si no existe un marcador del usuario, crea uno y agrégalo al mapa
+          userMarker = L.marker([latitude, longitude]).addTo(map);
+          map.setView([latitude, longitude], 17);
+        }
+      },
+      function (error) {
+        console.log(error);
+      }
+    );
+  } else {
+    alert('Tu navegador no admite la geolocalización.');
+  }
+}
 
 initializePolygons();
+getUserLocation();
