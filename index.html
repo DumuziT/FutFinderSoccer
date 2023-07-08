@@ -1,151 +1,151 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <title>FutbolYA</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <style>
-      html,body {
-        height: 100%;
-        margin: 0;
-        background: #9cdd99;
-      }
-      .leaflet-container {
-        height: 100%;
-        width: 100%;
-        max-width: 100%;
-        max-height: 100%;
-      }
-      select, button{
-        background-color: #00ff77;
-        margin-top: 8px;
-        color: black;
-        padding: 3px;
-        height: 50px;
-        border-radius: 15px;
-        border-style: double;
-        border-width: 10px;
-        border-style: ridge;
-        border-color: #00dd66;
-        font-size: 20px;
-      }
-      table {
-        width: 100%;
-      }
-      .design1 {
-        width: 210px;
-      }
-      .design2 {
-        width: 180px;
-      }
-      tr:nth-child(even) {
-        background-color: #00ff77;
-        font-size: 30px;
-      }
-      tr:nth-child(odd) {
-        background-color: #00dd66;
-        font-size: 30px;
-      }
-/*INICIO DE LA EDICION DEL MAPA*/
-      #container {
-        width: 100%;
-        height: 70%;
-      }
-      #map {
-        width: 100%;
-        height: 100%;
-      }
-      .popup-text {
-        font-size: 20px; /*Ajusta el tamaño de la fuente según tus necesidades*/
-      }
-/*FINAL DE LA EDICION DEL MAPA*/
-/*INICIO DE LA EDICION DEL USUARIO*/
-      .floating-tab {
-        background: #9ccc99;
-        position: absolute;
-        top: 10px;
-        bottom: auto;
-        right: 10px;
-        z-index: 9999;
-        width: 550px;
-        height: 4px;
-        background-color: #f1f1f1;
-        border: 1px solid #ccc;
-        border-radius: 2px;
-      }
-      .tab-button {
-        background: #9ccc99;
-        width: 100%;
-        padding: 10px;
-        background-color: #ccc;
-        border: none;
-        border-bottom: 1px solid #999;
-        border-radius: 4px 4px 0 0;
-        cursor: pointer;
-        font-size: 35px;
-        font-weight: bold;
-      }
-      .tab-content {
-        background: #9ccc99;
-        padding: 10px;
-      }
-      .hidden {
-        background: #9ccc99;
-        display: none;
-      }
-/*FIN DE LA EDICION DEL USUARIO*/
-    </style>
-  </head>
-  <body>
-<div id="container">
-  <div id="map"></div>
-</div>
-    <div>
-      <select class="design1" id="canchaSelect" onchange="changeStatusByCancha()">
-        <option value="">Seleccionar cancha</option>
-        <option value="UChile1">UChile1</option>
-        <option value="UChile2">UChile2</option>
-        <option value="UChile3">UChile3</option>
-        <option value="UChile4">UChile4</option>
-        <option value="UTEM">UTEM</option>
-        <option value="Alerces">Alerces</option>
-      </select>
-      <select class="design2" id="statusSelect">
-        <option value="Ocupado">Ocupado</option>
-        <option value="Disponible">Disponible</option>
-      </select>
-      <button class="design2" onclick="changeSelectedCanchaStatus()">Cambiar Estado</button>
-      <button class="design2" id="showTabButton">Usuario</button>
-      <div class="floating-tab hidden">
-        <button class="tab-button">Usuario</button>
-        <div class="tab-content">
-          <table>
-            <tr>
-              <th colspan="2">
-                <img src="ronaldo.jpg" alt="Imagen" width="250" height="250">
-              </th>
-            </tr>
-            <tr>
-              <th>Nombre:</th>
-              <td>Cristiano Ronaldo</td>
-            </tr>
-            <tr>
-              <th>Calificacion:</th>
-              <td>5/5</td>
-            </tr>
-            <tr>
-              <th>Posicion:</th>
-              <td>Delantero</td>
-            </tr>
-            <tr>
-              <th>Tiempo de juego:</th>
-              <td>+9999hrs</td>
-            </tr>
-          </table>
-        </div>
+<head>
+  <title>FutbolYA</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <style>
+    html,body {
+      height: 100%;
+      margin: 0;
+      background: #9cdd99;
+    }
+    .leaflet-container {
+      height: 100%;
+      width: 100%;
+      max-width: 100%;
+      max-height: 100%;
+    }
+    select, button{
+      background-color: #00ff77;
+      margin-top: 8px;
+      color: black;
+      padding: 3px;
+      height: 50px;
+      border-radius: 15px;
+      border-style: double;
+      border-width: 10px;
+      border-style: ridge;
+      border-color: #00dd66;
+      font-size: 20px;
+    }
+    table {
+      width: 100%;
+    }
+    .design1 {
+      width: 210px;
+    }
+    .design2 {
+      width: 180px;
+    }
+    tr:nth-child(even) {
+      background-color: #00ff77;
+      font-size: 30px;
+    }
+    tr:nth-child(odd) {
+      background-color: #00dd66;
+      font-size: 30px;
+    }
+    /*INICIO DE LA EDICION DEL MAPA*/
+    #container {
+      width: 100%;
+      height: 70%;
+    }
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+    .popup-text {
+      font-size: 20px; /*Ajusta el tamaño de la fuente según tus necesidades*/
+    }
+    /*FINAL DE LA EDICION DEL MAPA*/
+    /*INICIO DE LA EDICION DEL USUARIO*/
+    .floating-tab {
+      background: #9ccc99;
+      position: absolute;
+      top: 10px;
+      bottom: auto;
+      right: 10px;
+      z-index: 9999;
+      width: 550px;
+      height: 4px;
+      background-color: #f1f1f1;
+      border: 1px solid #ccc;
+      border-radius: 2px;
+    }
+    .tab-button {
+      background: #9ccc99;
+      width: 100%;
+      padding: 10px;
+      background-color: #ccc;
+      border: none;
+      border-bottom: 1px solid #999;
+      border-radius: 4px 4px 0 0;
+      cursor: pointer;
+      font-size: 35px;
+      font-weight: bold;
+    }
+    .tab-content {
+      background: #9ccc99;
+      padding: 10px;
+    }
+    .hidden {
+      background: #9ccc99;
+      display: none;
+    }
+    /*FIN DE LA EDICION DEL USUARIO*/
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="map"></div>
+  </div>
+  <div>
+    <select class="design1" id="canchaSelect" onchange="changeStatusByCancha()">
+      <option value="">Seleccionar cancha</option>
+      <option value="UChile1">UChile1</option>
+      <option value="UChile2">UChile2</option>
+      <option value="UChile3">UChile3</option>
+      <option value="UChile4">UChile4</option>
+      <option value="UTEM">UTEM</option>
+      <option value="Alerces">Alerces</option>
+    </select>
+    <select class="design2" id="statusSelect">
+      <option value="Ocupado">Ocupado</option>
+      <option value="Disponible">Disponible</option>
+    </select>
+    <button class="design2" onclick="changeSelectedCanchaStatus()">Cambiar Estado</button>
+    <button class="design2" id="showTabButton">Usuario</button>
+    <div class="floating-tab hidden">
+      <button class="tab-button">Usuario</button>
+      <div class="tab-content">
+        <table>
+          <tr>
+            <th colspan="2">
+              <img src="ronaldo.jpg" alt="Imagen" width="250" height="250">
+            </th>
+          </tr>
+          <tr>
+            <th>Nombre:</th>
+            <td>Cristiano Ronaldo</td>
+          </tr>
+          <tr>
+            <th>Calificacion:</th>
+            <td>5/5</td>
+          </tr>
+          <tr>
+            <th>Posicion:</th>
+            <td>Delantero</td>
+          </tr>
+          <tr>
+            <th>Tiempo de juego:</th>
+            <td>+9999hrs</td>
+          </tr>
+        </table>
       </div>
-      <a href="map.html"><button class="design2">Mapa completo</button></a>
     </div>
-    <script src="indexMap.js"></script>
-  </body>
+    <a href="map.html"><button class="design2">Mapa completo</button></a>
+  </div>
+  <script src="indexMap.js"></script>
+</body>
 </html>
